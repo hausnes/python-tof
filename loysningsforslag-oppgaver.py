@@ -18,6 +18,11 @@ domene = "gmail.com"
 epost = fornavn + "." + mellomnavn + "." + etternavn + "@" + domene
 print(epost)
 
+# 1.3: Alternativ 2, variant
+navn = "Jo Bjornar"
+print(navn.lower()) # Denne gjer alt i 'navn' om til små bokstavar
+print(navn.lower().replace(" ","")) # Denne fjernar mellomrom i navn, i tillegg til å gjere om til små bokstavar
+
 # 1.5
 gate = "Kongens Gate"
 husnr = 432
