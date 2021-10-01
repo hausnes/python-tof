@@ -7,7 +7,7 @@ fleireRundar = "j"
 while fleireRundar == "j":
     antallRundar += 1
     valgMaskin = random.choice(["stein","saks","papir"])
-    valgBruker = input("\nVelg stein (stein), saks (saks) eller papir (papir): ")
+    valgBruker = input("\nSkriv inn 'stein', 'saks' eller 'papir': ")
     if valgMaskin == valgBruker:
         print("Uavgjort")
     elif valgMaskin == "stein" and valgBruker == "saks":

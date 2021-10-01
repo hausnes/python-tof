@@ -1,6 +1,6 @@
 import random
 valgMaskin = random.choice(["stein","saks","papir"])
-valgBruker = input("Velg stein (stein), saks (saks) eller papir (papir): ")
+valgBruker = input("Skriv inn 'stein', 'saks' eller 'papir': ")
 if valgMaskin == valgBruker:
     print("Uavgjort")
 elif valgMaskin == "stein" and valgBruker == "saks":
