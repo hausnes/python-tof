@@ -109,3 +109,27 @@ else:
     print("Feil i input, du må skrive eit tal mellom 1-3. Utrekninga kunne ikkje bli gjennomført.")
 
 print("Endeleg pris for deg med alder",alder,"og rutevalg",reiseRute,"er",endelegPris)
+
+# 2.4 (Partall eller ei)
+antPar = 0 # Initierer antall partall-counter
+forsok = 0 # Initierer counter for antall forsøk
+ny = 'J' # Initierer kontrollstruktur for ny input
+
+while ny.upper() == 'J':
+    
+    tall = int(input('Skriv et tall mellom 1-1000:' )) # Ta inn et tall fra bruker
+    forsok += 1
+    ### Skriv din kode under denne linjen ###
+    if (tall%2) == 1: # %2 gjer enten ein rest på 1 for oddetall, eller ikkje
+        print("Oddetall")
+    else:
+        print("Partall")
+        antPar += 1
+    
+    ### Skriv din kode over denne linjen ###
+        
+    ny = str(input('Vil du skrive inn et nytt tall? (J/N): ')) # Sjekker om programmet skal avsluttes eller startes på nytt
+    
+print('Du skrev inn ', forsok, 'tall, og', antPar, 'av dem var partall.') # Beskjed til bruker om antall forsøk og antall partall
+
+# 2.5 (Stein, saks, papir. Sjå eigne filer. Filene heiter stein-saks-papir-v1 og -v2. )
