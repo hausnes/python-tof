@@ -42,3 +42,70 @@ print("Middagen, inkl. drikke, kostar:",sumMiddag,"kroner.")
 antPersoner = int(input("Kor mange personar skal dele på rekninga? "))
 prisPerPerson = sumMiddag / antPersoner
 print("Kvar person i ditt følge på",antPersoner,"personar, skal betale:",round(prisPerPerson,2),"kroner.")
+
+# 2.1 ("Gjettespel")
+import random
+
+hemmeligTall = random.randint(0,100) # Hent et tilfeldig tall
+
+gjettet = 0 # Initier variabelen for gjettet tall
+antGjett = 0 # Initier counter for antall forsøk
+
+while gjettet != hemmeligTall:
+    
+    gjettet = int(input('Gjett det hemmelige tallet (1-100): ')) # Ta inn et gjett fra bruker
+    antGjett += 1 # Øk antall forsøk med 1 for hver runde
+    
+    ### Skriv din kode under denne linjen ###
+    if gjettet>hemmeligTall:
+        print('Du gjetta for høgt. Forsøk igjen.')
+    else:
+        print('Du gjetta for lågt. Forsøk igjen.')
+    
+    ### Skriv din kode over denne linjen ###
+
+print('Du gjettet riktig! Det hemmelige tallet var', hemmeligTall, '. Du brukte', antGjett, 'forsøk.')
+
+# 2.2 (Krav til input innan to gitte intervall)
+print("Gi a og b, begge heltall i intervall <40,50> eller <70,90>:" )
+a = int(input("Verdi for a: "))
+b = int(input("Verdi for b: "))
+  
+if ((a >= 70 and a <= 90) or (a >= 40 and a <= 50)) and ((b >= 70 and b <= 90) or (b >= 40 and b <= 50)):
+    print("Tallene er begge innenfor gyldige intervall.")
+else:
+    print("Minst ett av tallene er utenfor et gyldig intervall.")
+
+# 2.3 (Reiser)
+rute1_by_sjo = 150
+rute2_sjo_fjell = 250
+rute3_fjell_by = 50
+
+alder = int(input("Kor gamal er du? "))
+rabattGitt = 1 # Det me gangar med, 1 gjer ingen rabatt, 0 gjer gratisbillett
+if alder >= 0 and alder <= 2:
+    rabattGitt = 0
+elif alder > 2 and alder <= 16:
+    rabattGitt = 0.5
+elif alder >= 65:
+    rabattGitt = 0.3
+else:
+    rabattGitt = 1
+
+print("Din alder:",alder,", med rabattkode:",rabattGitt," (0 = ingen betaling, 0.5 = 50%, 1 = ingen rabatt")
+
+endelegPris = 0
+reiseRute = int(input("Spesifiser med eit tal kva type reise du ynskjer:\n1: By - Sjø\n2: Sjø - Fjell\n3: Fjell - By\n"))
+if reiseRute == 1:
+    endelegPris = rute1_by_sjo * rabattGitt
+    print("Standardpris:",rute1_by_sjo,", din pris:",endelegPris)
+elif reiseRute == 2:
+    endelegPris = rute2_sjo_fjell * rabattGitt
+    print("Standardpris:",rute2_sjo_fjell,", din pris:",endelegPris)
+elif reiseRute == 3:
+    endelegPris = rute3_fjell_by * rabattGitt
+    print("Standardpris:",rute3_fjell_by,", din pris:",endelegPris)
+else:
+    print("Feil i input, du må skrive eit tal mellom 1-3. Utrekninga kunne ikkje bli gjennomført.")
+
+print("Endeleg pris for deg med alder",alder,"og rutevalg",reiseRute,"er",endelegPris)
