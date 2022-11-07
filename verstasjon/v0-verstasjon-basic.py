@@ -11,7 +11,10 @@ NB: Lag ei csv-fil med overskrift-rad om du ynskjer det. Legg merke til
 at det ved skriving til csv-fil blir lagt til ny linje (a for append).
 '''
 
-import requests
+timestamp = datetime.now()
+delay = 30 # Kor lenge det er mellom kvar gong me les av sensordata
+
+import requests # For aa handtere aa sende data til Thingspeak
 import ST7735
 import time
 from datetime import datetime
@@ -33,13 +36,12 @@ logging.basicConfig(
     level=logging.INFO,
     datefmt='%Y-%m-%d %H:%M:%S')
 
-logging.info("""Verstasjon - Reads temperature, pressure, humidity,
-#PM2.5, and PM10 from Enviro plus and sends data to CSV
-#and Thingspeak.
-
-#Press Ctrl+C to exit!
-
-#""")
+logging.info("""Verstasjon: Les temperatur, trykk, fuktighet,
+                PM2.5, and PM10 frå Enviro plus og sender data 
+                til CSV og Thingspeak.
+                
+                Press Ctrl+C for å avslutte programmet!
+            """)
 
 bus = SMBus(1)
 
@@ -62,9 +64,6 @@ disp.begin()
 # Create PMS5003 instance
 pms5003 = PMS5003()
 
-timestamp = datetime.now()
-delay = 5
-
 def hentData():
     values = []
 
@@ -75,7 +74,7 @@ def hentData():
     comp_temp = raw_temp - ((cpu_temp - raw_temp) / comp_factor)
     values.append(comp_temp)
 
-    trykk = bme280.get_pressure() * 100
+    trykk = bme280.get_pressure()
     values.append(trykk)
 
     fukt = bme280.get_humidity()
@@ -131,6 +130,31 @@ def display_status():
     draw.text((x, y), message, font=font, fill=text_colour)
     disp.display(img)
 
+# Dine unike innstillingar for Thingspeak
+# Endre til din nokkel
+API_KEY  = 'HUSG2L6ROLFBXNZ2' # NB: Ikkje del i ein "vanleg situasjon", og ikkje bruk min nokkel!
+API_URL  = 'https://api.thingspeak.com/update'
+
+# Sender data til Thingspeak, gjer feilmelding om problem
+def send_data_til_thingspeak(tidspunkt, temperatur, trykk, fuktighet, pm25, pm10):
+    data = {
+        'api_key': API_KEY, 
+        'field1':tidspunkt,
+        'field2':temperatur, 
+        'field3':trykk,
+        'field4':fuktighet,
+        'field5':pm25,
+        'field6':pm10
+    }; 
+    resultat = requests.post(API_URL, params=data)
+    print(resultat.status_code)
+    if resultat.status_code == 200: # "godkjent"
+        print("Suksess, sendt til Thingspeak.")
+    else:
+        print("Feil, ikkje sendt til Thingspeak.")
+        # Boer me handtere dette? Me kan til doemes lagre i ein datastruktur (liste) og skrive innhaldet fraa denne naar me igjen "faar kontakt"
+
+
 # Compensation factor for temperature
 comp_factor = 2.25
 
@@ -149,14 +173,15 @@ font = ImageFont.truetype(UserFont, font_size)
 logging.info("Raspberry Pi serial: {}".format(get_serial_number()))
 logging.info("Wi-Fi: {}\n".format("connected" if check_wifi() else "disconnected"))
 
-with open('verstasjon-v0.csv', 'a', newline='') as f: # NB: 'w' betyr at alt som låg i fila frå før blir overskrive. 'a' legg til, men pass på å då fjerne overskriftene
+with open('v0-verstasjon.csv', 'a', newline='') as f: # NB: 'w' betyr at alt som låg i fila frå før blir overskrive. 'a' legg til, men pass på å då fjerne overskriftene
     data_writer = writer(f)
     #data_writer.writerow(['tidspunkt','temperatur', 'trykk', 'fuktighet','pm25','pm10']) # NB: Legg til dei andre sensoroverskriftene om du bruker dei
     while True:
         data = hentData()
         time_difference = data[0] - timestamp
         if time_difference.seconds > delay:
-            logging.info(data)
-            data_writer.writerow(data)
+            logging.info(data) # NB: Kan gjerne kommenterast ut når programmet skal køyre i bakgrunnen
+            data_writer.writerow(data) # Skrive til CSV
+            send_data_til_thingspeak(data[0],data[1],data[2],data[3],data[4],data[5]) # Skrive til Thingspeak
             timestamp = datetime.now()
         display_status()
