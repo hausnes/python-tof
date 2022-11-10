@@ -11,7 +11,7 @@ NB: Lag ei csv-fil med overskrift-rad om du ynskjer det. Legg merke til
 at det ved skriving til csv-fil blir lagt til ny linje (a for append).
 '''
 
-timestamp = datetime.now()
+
 delay = 30 # Kor lenge det er mellom kvar gong me les av sensordata
 
 import requests # For aa handtere aa sende data til Thingspeak
@@ -24,6 +24,8 @@ from pms5003 import PMS5003, ReadTimeoutError, ChecksumMismatchError
 from subprocess import PIPE, Popen, check_output
 from PIL import Image, ImageDraw, ImageFont
 from fonts.ttf import RobotoMedium as UserFont
+
+timestamp = datetime.now()
 
 try:
     from smbus2 import SMBus
