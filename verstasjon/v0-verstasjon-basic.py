@@ -37,11 +37,11 @@ logging.basicConfig(
     datefmt='%Y-%m-%d %H:%M:%S')
 
 logging.info("""Verstasjon: Les temperatur, trykk, fuktighet,
-                PM2.5, and PM10 frå Enviro plus og sender data 
-                til CSV og Thingspeak.
+    PM2.5, and PM10 frå Enviro plus og sender data 
+    til CSV og Thingspeak.
                 
-                Press Ctrl+C for å avslutte programmet!
-            """)
+    Press Ctrl+C for å avslutte programmet!
+""")
 
 bus = SMBus(1)
 
