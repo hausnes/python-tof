@@ -150,7 +150,7 @@ font = ImageFont.truetype(UserFont, font_size)
 
 # Dine unike innstillingar for Thingspeak
 # Endre til din eigen nokkel!
-API_KEY  = 'HUSG2L6ROLFBXNZ2' # NB: Ikkje del i ein "vanleg situasjon", og ikkje bruk min nokkel!
+API_KEY  = '*********' # NB: Ikkje del denne med andre, slik at dei skriv til din kanal
 API_URL  = 'https://api.thingspeak.com/update'
 
 # Sender data til Thingspeak, gjer feilmelding om problem
