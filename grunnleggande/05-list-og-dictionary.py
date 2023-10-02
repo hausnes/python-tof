@@ -51,6 +51,10 @@ nyeData = {
 versamling.append(nyeData)
 
 print(f"Versamling etter at nye data er lagt til: \n{versamling}")
+print(f"\nFinare utskrift av versamling: ")
+for dag in versamling:
+    print(f"Temperatur: {dag['temperatur']}, Luftfuktighet: {dag['luftfuktighet']}, Lufttrykk: {dag['lufttrykk']}, Partikkelkonsentrasjon: {dag['partikkelkonsentrasjon']}")
+    # print(f"\nPartikkelkonsentrasjon: {dag['partikkelkonsentrasjon']}")
 
-print(f"Det første elementet i versamling er: \n{versamling[0]}")
+print(f"\nDet første elementet i versamling er: \n{versamling[0]}")
 print(f"Temperaturen som ligg i det første elementet i lista er: \n{versamling[0]['temperatur']}")
