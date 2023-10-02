@@ -31,7 +31,7 @@ try:
             "lufttrykk": random.uniform(900, 1100),
             "partikkelkonsentrasjon": random.uniform(0, 1000)
         })
-        print(data[-1]) # Skriv ut siste element i listen
+        print(f"La nettopp til fylgjande data: \n{data[-1]} \nNo skal eg sove i 5 sekunder..") # Skriv ut siste element i listen
         sleep(5)
 except KeyboardInterrupt: # Trykk på ctrl + c for å kjøre denne delen av koden og dermed avslutte programmet
     pass
