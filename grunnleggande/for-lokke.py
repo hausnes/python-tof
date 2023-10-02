@@ -1,4 +1,4 @@
-tekst = "Dette er ein setning?"
+tekst = "Dette er ein setning!"
 
 for tegn in tekst:
     if tegn == "?":

@@ -10,7 +10,7 @@ def finnOrd(setning):
         else:
             return False
 
-listeInteresser = ["ski","telemark","helg","epler"]
+listeInteresser = ["ski","telemark","helg","tof","epler"]
 
 # Hovuddelen av programmet
 interesse = "tof" # Latar som om dette er input frå brukar
