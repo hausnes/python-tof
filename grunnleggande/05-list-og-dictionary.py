@@ -1,3 +1,4 @@
+# Frittståande eksempel nr. 1:
 # Lister i Python
 verListe = [24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
 print(f"Heile lista: \n{verListe}")
@@ -10,13 +11,15 @@ print(f"Det nest siste elementet er: {verListe[-2]}")
 def summerListe(liste):
     summen = 0
     for element in liste:
-        summen += element
+        # summen += element # Dette er "hurtigmåten" å skrive linjen under på
+        summen = summen + element
     return summen
 
 print(f"Summen av alle elementene i lista med eigen funksjon er: {summerListe(verListe)}")
 print(f"Summen av alle elementene i lista med innebygd funksjon er: {sum(verListe)}")
 print(f"Gjennomsnittet av alle elementene i lista er: {summerListe(verListe)/len(verListe)}")
 
+# Frittståande eksempel nr. 2:
 # Lister og dictionaries kan kombinerast
 versamling = [
     {
