@@ -37,7 +37,7 @@ s.set_pixels(smil)
 filnavn = str(datetime.now()) + ".jpg"
 
 time.sleep(2)
-kam.capture_file("/home/pi/Pictures/" + filnavn) # Endre til riktig sti (og filnavn) for ditt prosjekt
+kam.capture_file("/home/hausnes/Pictures/" + filnavn) # Endre til riktig sti (og filnavn) for ditt prosjekt
 
 time.sleep(2)
 s.clear()
