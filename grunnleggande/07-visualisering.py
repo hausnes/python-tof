@@ -3,7 +3,7 @@ import pandas as pd # Installer pandas ved å bruke kommandoen "pip install pand
 import matplotlib.pyplot as plt # Installer matplotlib ved å bruke kommandoen "pip install matplotlib" i terminalen
 
 # Les inn data
-data = pd.read_csv('07-visualisering-data.csv', sep=',', header=0) # header=0 betyr at første rad er kolonnenamn
+data = pd.read_csv('data.csv', sep=',', header=0) # header=0 betyr at første rad er kolonnenamn
 
 print(data.describe()) # Skriv ut statistikk om data
 
