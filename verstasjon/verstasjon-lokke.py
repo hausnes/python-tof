@@ -5,7 +5,7 @@ Forklaring:
 Køyrer ein uendeleg loop som loggar data kvar X-te sekund (skift var. 'delay' til ønska verdi)
 
 Anbefalt å køyre vha. crontab som fylgjer:
-@reboot sleep 30 && sudo python3 /home/pi/v0-verstasjon-basic.py 
+@reboot sleep 60 && sudo python /home/pi/v0-verstasjon-basic.py # NB: Endre til der du har fila liggjande, men hugs å bruke full sti og riktig filnamn
 
 NB: Lag ei csv-fil med overskrift-rad om du ynskjer det. Legg merke til 
 at det ved skriving til csv-fil blir lagt til ny linje (a for append).
