@@ -8,7 +8,7 @@ vintertid = False
 
 # import og laging av arrays
 # Henter inn fila som en dataframe i pandas
-# data = pd.read_csv('http://sensor.marin.ntnu.no/logs/noa.txt', delimiter=',')
+#data = pd.read_csv('http://sensor.marin.ntnu.no/logs/noa.txt', delimiter=',')
 data = pd.read_csv('noa.txt', delimiter=',')
 
 epochTime = data["1715000796"].values # NB: Disse verdiene samsvarer med første kolonne i datafilen, du må endre til det som gjelder din fil
